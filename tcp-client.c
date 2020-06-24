@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <errno.h>
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
     strcpy(deststr, argv[1]);
     printf("Dest address: %s\n", deststr);
 
-    destport = 13; // datettime protocol
+    destport = 13; // datetime protocol
     printf("Dest port number: %d\n", destport);
 
     char *p = strrchr(deststr, ':');
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
         struct sockaddr_in server;
         server.sin_family = AF_INET;
         server.sin_port = htons(destport);
-        sock = socket(AF_INET, SOCK_STREAM, 0); 
+        sock = socket(AF_INET, SOCK_STREAM, 0);
 
         if (sock < 0) {
             perror("Socket failed.\n");
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
         struct sockaddr_in6 server;
         server.sin6_family = AF_INET6;
         server.sin6_port = htons(destport);
-        sock = socket(AF_INET6, SOCK_STREAM, 0); 
+        sock = socket(AF_INET6, SOCK_STREAM, 0);
 
         if (sock < 0) {
             perror("Socket failed.\n");
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]){
         connect(sock, (struct sockaddr *)&server,
                 sizeof(server));
     }
-    
+
     memset(buf, 0, sizeof(buf));
     n = read(sock, buf, sizeof(buf));
 

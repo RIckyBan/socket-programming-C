@@ -1,3 +1,8 @@
+
+###################
+ Work In Progress
+###################
+
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
@@ -68,7 +73,7 @@ int main(int argc, char *argv[]){
             unsigned int len;
             len = sizeof(cliSockAddr);
             cliSock = accept(servSock, (struct sockaddr *) &cliSockAddr, &len);
-            
+
             if(cliSock < 0){
                 perror("accept() failed");
                 exit(EXIT_FAILURE);
@@ -98,13 +103,13 @@ int main(int argc, char *argv[]){
 
                 send(c_sock[i], obuf, (int)strlen(obuf), 0);
 
-                printf("connected from %s, port=%d.\n", 
-                    (char *)inet_ntop(AF_INET, &c_sockAddr[i].sin_addr, 
+                printf("connected from %s, port=%d.\n",
+                    (char *)inet_ntop(AF_INET, &c_sockAddr[i].sin_addr,
                     buff, sizeof(buff)),
                     ntohs(c_sockAddr[i].sin_port)
                     );
 
-                close(c_sock[i]);   
+                close(c_sock[i]);
             }
         }
     }
