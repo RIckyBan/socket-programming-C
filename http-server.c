@@ -39,12 +39,12 @@ int main(int argc, char *argv[]){
     while(1){
         len = sizeof(cliSockAddr);
         cliSock = accept(servSock, (struct sockaddr *) &cliSockAddr, &len);
-        
+
         if(cliSock < 0){
             perror("accept() failed");
             exit(EXIT_FAILURE);
         }
-        
+
         memset(inbuf, 0, sizeof(inbuf));
         recv(cliSock, inbuf, sizeof(inbuf), 0);
         printf("%s", inbuf);
@@ -59,8 +59,8 @@ int main(int argc, char *argv[]){
 
         send(cliSock, obuf, (int)strlen(obuf), 0);
 
-        printf("connected from %s, port=%d.\n", 
-            (char *)inet_ntop(AF_INET, &cliSockAddr.sin_addr, 
+        printf("connected from %s, port=%d.\n",
+            (char *)inet_ntop(AF_INET, &cliSockAddr.sin_addr,
             buff, sizeof(buff)),
             ntohs(cliSockAddr.sin_port)
             );
