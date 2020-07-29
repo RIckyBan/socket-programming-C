@@ -67,4 +67,5 @@ int main(int argc, char *argv[]){
 
         close(cliSock);
     }
+    exit(EXIT_FAILURE);  
 }
